@@ -1,2 +1,1 @@
-# AsyncAdapter
-Asynchronous Adapters
+# Contract Adapters for Asynchronous Programming
