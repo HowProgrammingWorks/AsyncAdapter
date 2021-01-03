@@ -2,7 +2,7 @@
 
 // Callback-last function to Promise-returning
 
-const promisify = fn => (...args) => new Promise(
+const promisify = (fn) => (...args) => new Promise(
   (resolve, reject) => {
     fn(...args, (err, data) => {
       if (err) reject(err);
@@ -30,7 +30,7 @@ twiceCallback(100, (e, value) => {
 });
 
 twicePromise(100)
-  .then(value => halfPromise(value))
-  .then(result => {
+  .then((value) => halfPromise(value))
+  .then((result) => {
     console.dir({ promisified: result });
   });

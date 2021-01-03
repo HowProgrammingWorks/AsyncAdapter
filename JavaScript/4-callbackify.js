@@ -2,28 +2,28 @@
 
 // Promise-returning function callback-last / error-first
 
-const callbackify = fn => (...args) => {
+const callbackify = (fn) => (...args) => {
   const callback = args.pop();
   fn(...args)
-    .then(value => {
+    .then((value) => {
       callback(null, value);
     })
-    .catch(reason => {
+    .catch((reason) => {
       callback(reason);
     });
 };
 
 // Usage
 
-const twicePromise = x => Promise.resolve(x * 2);
+const twicePromise = (x) => Promise.resolve(x * 2);
 const twiceCallback = callbackify(twicePromise);
 
-const halfPromise = x => Promise.resolve(x / 2);
+const halfPromise = (x) => Promise.resolve(x / 2);
 const halfCallback = callbackify(halfPromise);
 
 twicePromise(100)
-  .then(value => halfPromise(value))
-  .then(result => {
+  .then((value) => halfPromise(value))
+  .then((result) => {
     console.dir({ promise: result });
   });
 

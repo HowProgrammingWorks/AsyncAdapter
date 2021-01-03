@@ -2,10 +2,10 @@
 
 // Convert Promise to callback-last
 
-const promiseToCallbackLast = promise => callback => {
-  promise.then(value => {
+const promiseToCallbackLast = (promise) => (callback) => {
+  promise.then((value) => {
     callback(null, value);
-  }).catch(reason => {
+  }).catch((reason) => {
     callback(reason);
   });
 };

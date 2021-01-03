@@ -2,7 +2,7 @@
 
 // Synchronous function to callback-last
 
-const asyncify = fn => (...args) => {
+const asyncify = (fn) => (...args) => {
   const callback = args.pop();
   setTimeout(() => {
     try {
@@ -17,10 +17,10 @@ const asyncify = fn => (...args) => {
 
 // Usage
 
-const twice = x => x * 2;
+const twice = (x) => x * 2;
 const twiceAsync = asyncify(twice);
 
-const half = x => x / 2;
+const half = (x) => x / 2;
 const halfAsync = asyncify(half);
 
 const result = half(twice(100));
