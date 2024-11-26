@@ -2,16 +2,18 @@
 
 // Promise-returning function callback-last / error-first
 
-const callbackify = (fn) => (...args) => {
-  const callback = args.pop();
-  fn(...args)
-    .then((value) => {
-      callback(null, value);
-    })
-    .catch((reason) => {
-      callback(reason);
-    });
-};
+const callbackify =
+  (fn) =>
+  (...args) => {
+    const callback = args.pop();
+    fn(...args)
+      .then((value) => {
+        callback(null, value);
+      })
+      .catch((reason) => {
+        callback(reason);
+      });
+  };
 
 // Usage
 

@@ -2,15 +2,17 @@
 
 // Synchronous function to Promise-returning
 
-const promisifySync = (fn) => (...args) => {
-  try {
-    const result = fn(...args);
-    if (result instanceof Error) return Promise.reject(result);
-    else return Promise.resolve(result);
-  } catch (error) {
-    return Promise.reject(error);
-  }
-};
+const promisifySync =
+  (fn) =>
+  (...args) => {
+    try {
+      const result = fn(...args);
+      if (result instanceof Error) return Promise.reject(result);
+      else return Promise.resolve(result);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
 
 // Usage
 

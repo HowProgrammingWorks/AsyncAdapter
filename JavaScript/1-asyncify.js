@@ -2,18 +2,20 @@
 
 // Synchronous function to callback-last
 
-const asyncify = (fn) => (...args) => {
-  const callback = args.pop();
-  setTimeout(() => {
-    try {
-      const result = fn(...args);
-      if (result instanceof Error) callback(result);
-      else callback(null, result);
-    } catch (error) {
-      callback(error);
-    }
-  }, 0);
-};
+const asyncify =
+  (fn) =>
+  (...args) => {
+    const callback = args.pop();
+    setTimeout(() => {
+      try {
+        const result = fn(...args);
+        if (result instanceof Error) callback(result);
+        else callback(null, result);
+      } catch (error) {
+        callback(error);
+      }
+    }, 0);
+  };
 
 // Usage
 

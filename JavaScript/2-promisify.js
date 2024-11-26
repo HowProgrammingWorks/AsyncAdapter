@@ -2,14 +2,26 @@
 
 // Callback-last function to Promise-returning
 
-const promisify = (fn) => (...args) => new Promise(
-  (resolve, reject) => {
-    fn(...args, (err, data) => {
-      if (err) reject(err);
-      else resolve(data);
+const promisify =
+  (fn) =>
+  (...args) =>
+    new Promise((resolve, reject) => {
+      fn(...args, (err, data) => {
+        if (err) reject(err);
+        else resolve(data);
+      });
     });
-  }
-);
+
+/*
+const promisify = (fn) => (...args) => {
+  const { promise, resolve, reject } = Promise.withResolvers();
+  fn(...args, (err, data) => {
+    if (err) reject(err);
+    else resolve(data);
+  });
+  return promise;
+};
+*/
 
 // Usage
 
